@@ -1,0 +1,251 @@
+:root {
+  --bg: #f4f1e8;
+  --ink: #10212b;
+  --muted: #4f6470;
+  --card: rgba(255, 255, 255, 0.7);
+  --line: rgba(16, 33, 43, 0.12);
+  --accent: #0d8f78;
+  --accent-2: #ff6f3c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(13, 143, 120, 0.2), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(255, 111, 60, 0.18), transparent 35%),
+    linear-gradient(130deg, #efe8d8 0%, #eef6f3 45%, #f8efe4 100%);
+  overflow-x: hidden;
+}
+
+.layout {
+  width: min(1120px, 94vw);
+  margin: 2rem auto 3rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 1.2rem;
+  backdrop-filter: blur(8px);
+  background: var(--card);
+  box-shadow: 0 12px 28px rgba(16, 33, 43, 0.08);
+}
+
+.hero {
+  grid-column: span 12;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  color: var(--muted);
+  margin: 0.4rem 0 0.7rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.meta span {
+  font-size: 0.85rem;
+  background: rgba(13, 143, 120, 0.08);
+  border: 1px solid rgba(13, 143, 120, 0.2);
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+}
+
+.panel {
+  grid-column: span 5;
+}
+
+.result {
+  grid-column: span 7;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.tab {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: linear-gradient(90deg, var(--accent), #11a98f);
+  color: #fff;
+  border-color: transparent;
+}
+
+.pane {
+  display: none;
+  margin-top: 1rem;
+}
+
+.pane.active {
+  display: block;
+}
+
+.dropzone {
+  display: block;
+  border: 2px dashed rgba(16, 33, 43, 0.2);
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.dropzone.drag-over {
+  border-color: var(--accent);
+  background: rgba(13, 143, 120, 0.08);
+}
+
+.dropzone input {
+  display: none;
+}
+
+.action {
+  margin-top: 0.9rem;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(120deg, var(--accent), #11a98f);
+}
+
+.action.secondary {
+  background: linear-gradient(120deg, var(--accent-2), #ff946d);
+}
+
+.action.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+#cameraStream {
+  width: 100%;
+  border-radius: 14px;
+  background: #101010;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+.camera-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.status {
+  min-height: 1.2rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.result h2 {
+  margin-top: 0;
+}
+
+#resultImage {
+  width: 100%;
+  min-height: 220px;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 0.8rem;
+}
+
+.metric {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.metric h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.metric p {
+  margin: 0.35rem 0 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.detection-list {
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.detection-list li {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.55rem 0.65rem;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.orb {
+  position: fixed;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  filter: blur(55px);
+  z-index: -1;
+}
+
+.orb-a {
+  background: rgba(13, 143, 120, 0.25);
+  top: -20px;
+  left: -30px;
+}
+
+.orb-b {
+  background: rgba(255, 111, 60, 0.22);
+  bottom: 10px;
+  right: 10px;
+}
+
+@media (max-width: 900px) {
+  .panel,
+  .result {
+    grid-column: span 12;
+  }
+}

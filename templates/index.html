@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SLIBR Vision Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+
+  <main class="layout">
+    <section class="hero card">
+      <h1>SLIBR Vision Console</h1>
+      <p class="sub">Upload an image or capture from camera to run YOLO detection instantly.</p>
+    </section>
+
+    <section class="panel card">
+      <div class="tabs">
+        <button id="uploadTab" class="tab active" type="button">Upload</button>
+        <button id="cameraTab" class="tab" type="button">Camera</button>
+      </div>
+
+      <div id="uploadPane" class="pane active">
+        <label class="dropzone" for="imageFile">
+          <input id="imageFile" type="file" accept="image/*" />
+          <span id="dropText">Drop image here or click to browse</span>
+        </label>
+        <button id="uploadBtn" class="action" type="button">Analyze Upload</button>
+      </div>
+
+      <div id="cameraPane" class="pane">
+        <video id="cameraStream" autoplay playsinline></video>
+        <div class="camera-actions">
+          <button id="startCameraBtn" class="action secondary" type="button">Start Camera</button>
+          <button id="captureBtn" class="action" type="button">Capture & Analyze</button>
+          <button id="stopCameraBtn" class="action ghost" type="button">Stop Camera</button>
+        </div>
+      </div>
+
+      <p id="status" class="status">Ready.</p>
+    </section>
+
+    <section class="result card">
+      <h2>Detection Output</h2>
+      <img id="resultImage" alt="Annotated result" />
+      <div class="result-grid">
+        <div class="metric">
+          <h3>Objects</h3>
+          <p id="countValue">0</p>
+        </div>
+      </div>
+      <ul id="detectionList" class="detection-list"></ul>
+    </section>
+  </main>
+
+  <canvas id="captureCanvas" hidden></canvas>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

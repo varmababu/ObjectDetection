@@ -1,0 +1,32 @@
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+env/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Runtime and app outputs
+uploads/*
+!uploads/.gitkeep
+runs/
+runs_stats/
+
+# Datasets and large artifacts (keep repo lightweight)
+dataset/
+SLiBR_dataset/
+object_detection/
+*.pt
+*.onnx
+*.engine
+
+# Logs and reports
+*.log
+*.csv
