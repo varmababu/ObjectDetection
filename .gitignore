@@ -13,20 +13,30 @@ env/
 Thumbs.db
 .vscode/
 
-# Runtime and app outputs
+# Runtime outputs
 uploads/*
 !uploads/.gitkeep
+
 runs/
 runs_stats/
 
-# Datasets and large artifacts (keep repo lightweight)
+# Training datasets
 dataset/
 SLiBR_dataset/
 object_detection/
-*.pt
+
+# Ignore large model artifacts EXCEPT deployment model
 *.onnx
 *.engine
 
-# Logs and reports
+# Ignore all pt files except production model
+*.pt
+!models/
+!models/best.pt
+
+# Logs
 *.log
 *.csv
+
+# Environment variables
+.env
