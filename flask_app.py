@@ -7,7 +7,8 @@ from pathlib import Path
 
 from flask import Flask, jsonify, render_template, request
 from PIL import Image
-
+from dotenv import load_dotenv
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent
 UPLOAD_DIR = BASE_DIR / "uploads"
